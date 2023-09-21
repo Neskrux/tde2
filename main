@@ -1,0 +1,56 @@
+
+def composicao(f, g, x):
+    return f(g(x))
+
+
+def f(x):
+    return x**2 + 1
+
+def g(x):
+    return 2*x - 3
+
+
+def ler_funcao():
+    expressao = input("Digite a expressão da função (em termos de x): ")
+    def funcao(x):
+        return eval(expressao)
+    return funcao
+
+
+print("Digite a expressão das funções f(x) e g(x):")
+f = ler_funcao()
+g = ler_funcao()
+
+
+x = float(input("Digite o valor de x: "))
+
+
+resultado_g_f = composicao(g, f, x)  # (g ° f)(x)
+resultado_f_f = composicao(f, f, x)  # (f ° f)(x)
+resultado_g_g = composicao(g, g, x)  # (g ° g)(x)
+resultado_f_g = composicao(f, g, x)  # (f ° g)(x)
+
+
+print("(g ° f)(x) =", resultado_g_f)
+print("(f ° f)(x) =", resultado_f_f)
+print("(g ° g)(x) =", resultado_g_g)
+print("(f ° g)(x) =", resultado_f_g)
+
+
+resultado_f_g_4 = composicao(f, g, 4)
+resultado_g_f_4 = composicao(g, f, 4)
+
+if resultado_f_g_4 == resultado_g_f_4:
+    print("(f ° g)(4) é igual a (g° f)(4)")
+else:
+    print("(f ° g)(4) não é igual a (g° f)(4)")
+
+
+x = float(input("Digite um valor para x: "))
+resultado_f_g_x = composicao(f, g, x)
+resultado_g_f_x = composicao(g, f, x)
+
+if resultado_f_g_x == resultado_g_f_x:
+    print(f"(f ° g)({x}) é igual a (g° f)({x})")
+else:
+    print(f"(f ° g)({x}) não é igual a (g° f)({x}) e o PEDRO é viadinho")
